@@ -1,0 +1,11 @@
+A very simple example of using the Haskell parser and lexer generators Happy and Alex. This uses the Alex monad along with Happy to get a continuation-based parser and lexer. It took me quite a while to figure out how to get it right, maybe this will help save someone else a little time. 
+
+To compile:
+
+alex Lexer.x
+happy Parser.y
+
+and then load Parser.hs in GHCi, and
+
+*Parser> parse "[asdf dd [a [ddd vvv aaa] asdf]]"
+Right (Brack (S "asdf") (S "dd") (Brack (S "a") (Brack (S "ddd") (S "vvv") (S "aaa")) (S "asdf")))
